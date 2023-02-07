@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Менеджеры{% endblock %}
+
+{% block navbar %}
+    <li><a class="navbar" href="{% url 'get_vacancies_for_today' %}">Вакансии на сегодня</a></li>
+    <li><a class="navbar" href="{% url 'create_manager' %}">Создать менеджера</a></li>
+    <li><a class="navbar" href="{% url 'get_all_manager' %}">Менеджеры</a></li>
+{% endblock %}
+
+
+{% block content %}
+  {% for manager in managers %}
+<p>{{manager.name}}</p><a href="{% url 'delete_manager' manager.id%}"><button type="submit" class="btn btn-danger">Удалить менеджера</button></a>
+<a href="{% url 'update_manager' manager.id%}"><button type="submit" class="btn btn-danger">Обновить менеджера</button></a>
+  {% endfor %}
+
+{% endblock %}

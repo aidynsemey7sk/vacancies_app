@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Все вакансии{% endblock %}
+
+{% block navbar %}
+    <li><a class="navbar" href="{% url 'get_vacancies_for_today' %}">Вакансии на сегодня</a></li>
+    <li><a class="navbar" href="{% url 'get_all_vacancies' %}">Вакансии</a></li>
+    <li><a class="navbar" href="{% url 'create_vacancy' %}">Создать вакансию</a></li>
+{% endblock %}
+
+
+{% block content %}
+  {% for vacancy in vacancies %}
+  <a href="{% url 'vacancy_detail' vacancy.id %}"><p>{{vacancy.title}}</p></a>
+  {% endfor %}
+
+{% endblock %}

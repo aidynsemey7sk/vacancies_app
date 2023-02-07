@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}Вакансии на сегодня{% endblock %}
+{% block content %}
+  {% for vacancy in vacancies %}
+  <a href="{% url 'vacancy_detail' vacancy.id %}"><p>{{vacancy.title}}</p></a>
+  {% endfor %}
+
+{% endblock %}

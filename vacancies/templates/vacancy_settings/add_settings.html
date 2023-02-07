@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1></h1>
+
+<div class="control">
+    <div class="col-md-4">
+        <form action="" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="fieldWrapper">
+                    {{field.errors}}
+                    {{field.label_tag}} {{ field }}
+                    {% if field.help.text %}
+                    <p class="help">{{field.help_text|safe}}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">Добавить</button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

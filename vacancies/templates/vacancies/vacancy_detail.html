@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}Настройки объявления{% endblock %}
+{% block content %}
+<form method="post">
+
+    <div class="box">
+    <div class="vacancy-detail">
+
+
+        {% csrf_token %}
+            {% for field in form %}
+                {{ field }}
+            {% endfor %}
+        <div class="vacancy">
+            <h2>{{vacancy.title}}</h2>
+            <p> {{vacancy.text}}</p>
+            <button><a href="{% url 'add_group' vacancy.id %}">Добавить группу</a></button>
+            <button><a href="{% url 'update_vacancy' vacancy.id %}">Изменить вакансию</a></button>
+        </div>
+
+    </div>
+
+    {% for gr in settings %}
+    <div class="vacancy-group-card">
+        <div class="vacancy-group-name">
+            <ul>
+
+                <li class="group-name">Название группы: {{gr.group.name}}</li>
+                {% for man in gr.manager.all %}
+                <li>Менеджер: {{man}}</li>
+                {% endfor %}
+                <li class="group-name">Каждые {{gr.period}} часа</li>
+            </ul>
+        </div>
+        <div class="vacancy-group-time">
+            {% for time in gr.time.all %}
+                <ul>
+                    <li class="time">{{time}}</li>
+                </ul>
+            {% endfor %}
+            <button><a href="{% url 'update_time' gr.id %}">Изменить время</a></button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+            <button type="submit" class="btn btn-primary">Добавить</button>
+            <button type="submit" class="btn btn-primary"><a href="{% url 'get_all_vacancies' %}">Добавить без даты</a></button>
+        </form>
+<button><a href="{% url 'delete_vacancy' vacancy.id %}">Удалить вакансию</a></button>
+
+{% endblock %}

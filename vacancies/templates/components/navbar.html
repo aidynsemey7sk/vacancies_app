@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+    <li><a class="navbar" href="{% url 'get_vacancies_for_today' %}">Вакансии на сегодня</a></li>
+    <li><a class="navbar" href="{% url 'get_all_vacancies' %}">Вакансии</a></li>
+    <li><a class="navbar" href="{% url 'create_vacancy' %}">Создать вакансию</a></li>
+    <li><a class="navbar" href="{% url 'get_all_groups' %}">Группы</a></li>
+    <li><a class="navbar" href="{% url 'get_all_manager' %}">Менеджеры</a></li>
+{% endblock %}
