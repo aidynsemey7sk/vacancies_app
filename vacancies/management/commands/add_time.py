@@ -9,7 +9,7 @@ class Command(BaseCommand):
         start_time = time.time()
         for i in range(0, 24, 1):
             t = f"{str(i)}:00:00"
-            Time.objects.create(t)
+            Time.objects.create(time=t)
 
 
         self.stdout.write("--- %s seconds ---" % (time.time() - start_time))
