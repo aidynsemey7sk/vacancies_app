@@ -4,6 +4,7 @@ import datetime
 import random
 
 
+
 day = datetime.datetime.now().date()
 
 token = '5920626519:AAGmP8E8z74ApsvuP9RoJGn9Ke6UY62SXZM'
@@ -32,7 +33,7 @@ def send_bot():
     for i in vacancies:
         tt = VacancySettings.objects.filter(vacancy_id=i.id)
         for t in tt:
-            message = {"title": i.title, "text": i.text, 'group': t.group.name, 'group_id': t.group.chat_id}
+            message = {"title": i.title, "text": i.text, "image": i.get_thumbnail(), 'group': t.group.name, 'group_id': t.group.chat_id}
             managers_list = t.manager.all()
             managers_list = list(managers_list)
             if t.last_send_manager and len(managers_list) > 1:
@@ -42,12 +43,7 @@ def send_bot():
             message["manager_id"] = manager.id
             message['manager'] = manager.client_id
             times = t.random_time.all()
-            print(message)
 
-            tt = {'title': 'CKEDITOR',
-             'text': '''<p>Всем привет это текст из ckeditora<strong>&nbsp;</strong></p>\r\n\r\n<p><strong>жирный шрифт</strong></p>\r\n\r\n<p><em>с наклоном&nbsp;</em></p>\r\n\r\n<p><em><u>подчеркнутый шрифт</u></em></p>''',
-             'group': 'test-group-рассылки', 'group_id': '1001839749636', 'manager_id': 2, 'manager': '6017630571'}
-            send_telegram(tt)
             for tt in times:
                 if str(tt.time) == current_time:
                     print('Отправленно')

@@ -16,6 +16,7 @@
             <p> {{vacancy.text}}</p>
             <button><a href="{% url 'add_group' vacancy.id %}">Добавить группу</a></button>
             <button><a href="{% url 'update_vacancy' vacancy.id %}">Изменить вакансию</a></button>
+            <button><a href="{% url 'add_image' vacancy.id %}">Добавить фотографию</a></button>
         </div>
 
     </div>

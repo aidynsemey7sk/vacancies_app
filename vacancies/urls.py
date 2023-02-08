@@ -1,7 +1,7 @@
 from django.urls import path
 
 from vacancies.views.vacancy_views import get_all_vacancies, vacancy_detail, delete_vacancy, create_vacancy, \
-    update_vacancy,get_vacancies_for_today
+    update_vacancy,get_vacancies_for_today, add_image
 
 from vacancies.views.group_views import create_group, get_all_groups, delete_group, update_group, remove_group
 
@@ -19,6 +19,7 @@ urlpatterns = [
     # Vacancy
     path('create-vacancy/', create_vacancy, name="create_vacancy"),
     path('delete-vacancy/<int:vacancy_id>/', delete_vacancy, name="delete_vacancy"),
+    path('add-image-vacancy/<int:vacancy_id>/', add_image, name="add_image"),
     path('vacancy-detail/<int:vacancy_id>/', vacancy_detail, name="vacancy_detail"),
     path('update-vacancy/<int:vacancy_id>/', update_vacancy, name="update_vacancy"),
 

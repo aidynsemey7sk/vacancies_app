@@ -63,14 +63,24 @@ class VacancyForm(ModelForm):
             attrs={'class': "form-control", "textarea"
                    "placeholder": "Введите название вакансии"}))
 
-    # text = forms.CharField(
-    #     widget=forms.Textarea())
+    # image = forms.ImageField(widget=forms.FileInput())
+
     text = forms.CharField(
         widget=CKEditorWidget())
 
     class Meta:
         model = Vacancy
         fields = ("title", 'text')
+
+
+class ImageForm(ModelForm):
+    image = forms.ImageField(widget=forms.FileInput(), required=False,
+
+                             )
+
+    class Meta:
+        model = Vacancy
+        fields = ('image',)
 
 
 class GroupForm(ModelForm):
